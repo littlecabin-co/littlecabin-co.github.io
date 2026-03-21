@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cabin Recovery｜慢一點的地方</title>
+<meta name="description" content="在關係結束之後，有時候不是事情太難，是那一刻撐不住。Cabin Recovery 陪妳慢一點。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F5F2EE;
+    --warm-white: #FAF8F5;
+    --brown: #2F2420;
+    --mid: #7A6458;
+    --light: #BFA27A;
+    --border: #EDE5DA;
+    --accent: #9C8468;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--brown);
+    font-family: 'Noto Sans TC', sans-serif;
+    font-weight: 400;
+    line-height: 1.95;
+    letter-spacing: 0.01em;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    padding: 22px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    background: rgba(245,242,238,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s;
+  }
+
+  nav.scrolled { border-color: var(--border); }
+
+  .nav-logo {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--brown);
+    letter-spacing: 0.02em;
+  }
+
+  .nav-cta {
+    font-size: 13px;
+    color: var(--mid);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .nav-cta:hover { color: var(--brown); border-color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    background: #F5F2EE;
+    padding: 180px 48px 120px;
+    max-width: 680px;
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .hero-label {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--light);
+    margin-bottom: 36px;
+    font-weight: 400;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.3s forwards;
+  }
+
+  .hero-title {
+    font-size: clamp(32px, 5vw, 50px);
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--brown);
+    margin-bottom: 8px;
+    letter-spacing: -0.015em;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.6s forwards;
+  }
+
+  .hero-title em {
+    font-style: normal;
+    color: var(--accent);
+  }
+
+  .hero-break {
+    height: 28px;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.75s forwards;
+  }
+
+  .hero-sub {
+    font-size: 17px;
+    color: var(--mid);
+    line-height: 1.95;
+    max-width: 480px;
+    margin-bottom: 52px;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.9s forwards;
+  }
+
+  .hero-cta {
+    opacity: 0;
+    animation: fadeUp 1s ease 1.1s forwards;
+  }
+
+  /* SECTIONS */
+  .section {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 96px 48px;
+  }
+
+  .section-label {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--light);
+    margin-bottom: 28px;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+  .section-title {
+    font-size: clamp(24px, 3.5vw, 36px);
+    font-weight: 500;
+    line-height: 1.45;
+    margin-bottom: 32px;
+    letter-spacing: -0.01em;
+  }
+
+  /* DIVIDER */
+  .divider {
+    width: 24px;
+    height: 1px;
+    background: var(--border);
+    margin: 0 auto;
+  }
+
+  /* MIRROR */
+  .mirror-bg { background: #F7F4F0; }
+
+  .mirror-lines { margin-bottom: 36px; }
+
+  .mirror-line {
+    font-size: 16px;
+    color: var(--mid);
+    line-height: 1.6;
+    padding: 4px 0;
+  }
+
+  .mirror-line.indent {
+    padding-left: 20px;
+    color: #9A8478;
+    font-size: 15px;
+  }
+
+  .mirror-line.gap { height: 16px; }
+
+  .mirror-note {
+    font-size: 16px;
+    color: var(--brown);
+    line-height: 2.0;
+    font-weight: 400;
+  }
+
+  /* WHAT */
+  .what-p {
+    font-size: 16px;
+    line-height: 2.0;
+    color: var(--mid);
+    margin-bottom: 20px;
+  }
+
+  .what-p.key {
+    color: var(--brown);
+    font-weight: 400;
+    line-height: 1.9;
+  }
+
+  .what-highlight {
+    margin-top: 36px;
+    padding: 28px 30px;
+    background: #FAF7F2;
+    border-left: 2px solid #C9AF8D;
+    font-size: 16px;
+    line-height: 2.0;
+    color: var(--brown);
+  }
+
+  /* HOW */
+  .how-steps { margin-top: 40px; }
+
+  .step {
+    display: flex;
+    gap: 28px;
+    margin-bottom: 44px;
+    align-items: flex-start;
+  }
+
+  .step-num {
+    font-size: 26px;
+    font-weight: 300;
+    color: var(--border);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 36px;
+    letter-spacing: -0.02em;
+  }
+
+  .step-content h3 {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--brown);
+    margin-bottom: 8px;
+  }
+
+  .step-content p {
+    font-size: 14px;
+    color: var(--mid);
+    line-height: 1.9;
+  }
+
+  /* RED FLAG */
+  .redflag-wrap {
+    background: #F5F2EE;
+    padding: 120px 48px;
+  }
+
+  .redflag-inner {
+    max-width: 560px;
+    margin: 0 auto;
+    background: #FAF7F2;
+    border-radius: 16px;
+    padding: 64px 48px;
+  }
+
+  .redflag-p {
+    font-size: 17px;
+    color: var(--mid);
+    line-height: 2.0;
+    margin-bottom: 0;
+  }
+
+  .redflag-p + .redflag-p { margin-top: 28px; }
+
+  .redflag-p.accent {
+    color: var(--brown);
+    font-weight: 400;
+  }
+
+  .redflag-space { height: 20px; }
+
+  /* NOT */
+  .not-bg { background: #F7F4F0; }
+
+  .not-lines { margin-bottom: 32px; }
+
+  .not-line {
+    font-size: 15px;
+    color: var(--mid);
+    padding: 12px 0 12px 0;
+    border-bottom: 1px solid var(--border);
+    line-height: 1.7;
+  }
+
+  .not-note {
+    font-size: 16px;
+    color: var(--brown);
+    line-height: 2.0;
+  }
+
+  /* PRICING */
+  .pricing-wrap {
+    background: #FCFAF7;
+    padding: 80px 48px;
+  }
+
+  .pricing-inner {
+    max-width: 480px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .price-card {
+    border: 1px solid #E9E1D6;
+    border-radius: 16px;
+    padding: 44px 36px;
+    margin: 36px 0;
+    background: #FFFFFF;
+    box-shadow: 0 4px 20px rgba(47,36,32,0.04);
+    text-align: left;
+  }
+
+  .price-period {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--light);
+    margin-bottom: 16px;
+    font-weight: 400;
+  }
+
+  .price-amount {
+    font-size: 44px;
+    font-weight: 500;
+    color: var(--brown);
+    line-height: 1.1;
+    margin-bottom: 6px;
+    letter-spacing: -0.02em;
+  }
+
+  .price-unit {
+    font-size: 13px;
+    color: var(--mid);
+    margin-bottom: 28px;
+  }
+
+  .price-includes { list-style: none; }
+
+  .price-includes li {
+    font-size: 15px;
+    color: var(--mid);
+    padding: 12px 0 12px 0;
+    border-bottom: 1px solid var(--border);
+    line-height: 1.8;
+  }
+
+  .price-includes li:last-child { border-bottom: none; }
+
+  .pricing-note {
+    font-size: 13px;
+    color: var(--mid);
+    margin-bottom: 32px;
+    line-height: 1.9;
+  }
+
+  /* CTA SECTION */
+  .cta-wrap {
+    background: #F5F2EE;
+    padding: 96px 48px;
+    text-align: center;
+  }
+
+  .cta-inner { max-width: 560px; margin: 0 auto; }
+
+  .cta-pre {
+    font-size: 16px;
+    color: var(--mid);
+    line-height: 2.1;
+    margin-bottom: 40px;
+  }
+
+  /* BUTTON */
+  .btn-primary {
+    display: inline-block;
+    padding: 15px 28px;
+    background: #7E6959;
+    color: #FAF8F5;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    text-decoration: none;
+    border-radius: 12px;
+    transition: background 0.2s ease, transform 0.1s ease;
+  }
+
+  .btn-primary:hover { background: #6D594B; }
+  .btn-primary:active { transform: scale(0.99); }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 56px 48px;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+
+  .footer-logo {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--brown);
+    margin-bottom: 8px;
+  }
+
+  .footer-tagline {
+    font-size: 13px;
+    color: var(--mid);
+    line-height: 1.7;
+  }
+
+  .footer-info { font-size: 13px; color: var(--mid); line-height: 2.0; }
+
+  .footer-info strong {
+    color: var(--brown);
+    font-weight: 500;
+    display: block;
+    margin-bottom: 8px;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .footer-info a {
+    color: var(--mid);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .footer-disclaimer {
+    font-size: 12px;
+    color: #A59586;
+    line-height: 1.85;
+    border-top: 1px solid var(--border);
+    padding-top: 24px;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* MOBILE */
+  @media (max-width: 640px) {
+    nav { padding: 20px 24px; }
+    .hero { padding: 140px 24px 80px; }
+    .section { padding: 72px 24px; }
+    .redflag-wrap { padding: 80px 24px; }
+    .redflag-inner { padding: 48px 28px; }
+    .pricing-wrap { padding: 60px 24px; }
+    .cta-wrap { padding: 72px 24px; }
+    footer { padding: 48px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-logo">Little Cabin</div>
+  <a href="https://tally.so/r/Pd0l25" class="nav-cta">開始這 21 天</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero reveal-hero">
+  <div class="hero-label">Cabin Recovery · 測試期</div>
+  <h1 class="hero-title">
+    有時候不是事情太難，<br>
+    是那一刻<em>撐不住</em>。
+  </h1>
+  <div class="hero-break"></div>
+  <p class="hero-sub">
+    Cabin Recovery<br>
+    是讓妳在那一刻，<br>
+    不要做出之後會後悔的事。<br>
+    <br>
+    陪妳在這裡。
+  </p>
+  <div class="hero-cta">
+    <a href="https://tally.so/r/Pd0l25" class="btn-primary">開始這 21 天</a>
+  </div>
+</div>
+
+<!-- MIRROR -->
+<div class="mirror-bg">
+  <div class="section reveal">
+    <div class="section-label">妳可能認識這種感覺</div>
+    <div class="mirror-lines">
+      <div class="mirror-line">忍不住一直看對方的動態</div>
+      <div class="mirror-line gap"></div>
+      <div class="mirror-line">很想傳訊</div>
+      <div class="mirror-line gap"></div>
+      <div class="mirror-line indent">但傳完又後悔</div>
+      <div class="mirror-line gap"></div>
+      <div class="mirror-line">晚上腦袋停不下來</div>
+      <div class="mirror-line gap"></div>
+      <div class="mirror-line">明知道不該</div>
+      <div class="mirror-line indent">但還是做了</div>
+      <div class="mirror-line gap"></div>
+      <div class="mirror-line">一個人的時候，特別重</div>
+    </div>
+    <p class="mirror-note">
+      這不是妳不夠理性，<br>
+      是身體還在那個拉扯裡。
+    </p>
+  </div>
+</div>
+
+<div style="padding:8px 0;"><div class="divider reveal"></div></div>
+
+<!-- WHAT -->
+<div class="section reveal">
+  <div class="section-label">Cabin 在做什麼</div>
+  <p class="what-p">Cabin 不會幫妳解決問題。</p>
+  <p class="what-p">也不會告訴妳該怎麼做。</p>
+  <p class="what-p">它只做一件事：</p>
+  <p class="what-p key">
+    在妳快要做出某些行為的時候，<br>
+    幫妳多等一點時間。
+  </p>
+  <div class="what-highlight">
+    「不是要妳變好，<br>
+    是讓今天不要變得更糟。」
+  </div>
+</div>
+
+<div style="padding:8px 0;"><div class="divider reveal"></div></div>
+
+<!-- HOW -->
+<div class="section reveal">
+  <div class="section-label">它怎麼運作</div>
+  <div class="how-steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-content">
+        <h3>每天留一點點</h3>
+        <p>每天 3–5 分鐘，寫下今天的狀態。不用整理好，一句話也可以。</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-content">
+        <h3>隔天收到一封信</h3>
+        <p>Cabin 根據妳留下的內容，在隔天早上回一封信。不是建議，是陪著妳看那個狀態。</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-content">
+        <h3>有些時候，它會在剛剛好的時候出現</h3>
+        <p>當妳特別不穩的時候，會多一封信，陪妳在那幾分鐘裡。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RED FLAG -->
+<div class="redflag-wrap">
+  <div class="redflag-inner reveal">
+    <div class="section-label">紅燈機制</div>
+    <h2 class="section-title">如果某一刻<br>真的撐不住</h2>
+    <p class="redflag-p">
+      有時候不是不知道不該做，
+    </p>
+    <p class="redflag-p">
+      是那一刻，<br>
+      真的很想做。
+    </p>
+    <div class="redflag-space"></div>
+    <p class="redflag-p">
+      如果剛好在那個時候，<br>
+      妳可以先按下「先等一下」。
+    </p>
+    <div class="redflag-space"></div>
+    <p class="redflag-p accent">
+      先在這裡待一下就好。
+    </p>
+  </div>
+</div>
+
+<!-- NOT -->
+<div class="not-bg">
+  <div class="section reveal">
+    <div class="section-label">這不是什麼</div>
+    <div class="not-lines">
+      <div class="not-line">這不是心理治療。</div>
+      <div class="not-line">也不是諮商。</div>
+      <div class="not-line">它不會分析妳，也不會改變妳的人生。</div>
+    </div>
+    <p class="not-note">
+      只是陪妳，<br>
+      讓事情不要變得更糟。
+    </p>
+  </div>
+</div>
+
+<!-- PRICING -->
+<div class="pricing-wrap">
+  <div class="pricing-inner reveal">
+    <div class="section-label">測試期方案</div>
+    <div class="price-card">
+      <div class="price-period">21 天陪伴</div>
+      <div class="price-amount">500</div>
+      <div class="price-unit">新台幣 · 一次性</div>
+      <ul class="price-includes">
+        <li>每天一點點停留</li>
+        <li>隔天一封信</li>
+        <li>快忍不住的時候，<br>有「先等一下」</li>
+      </ul>
+    </div>
+    <p class="pricing-note">
+      名額有限，目前僅開放少量使用者<br>
+      測試期間不提供退款
+    </p>
+    <a href="https://tally.so/r/Pd0l25" class="btn-primary">我想先試試看</a>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-wrap">
+  <div class="cta-inner reveal">
+    <h2 class="section-title">我們從這裡<br>開始就好</h2>
+    <p class="cta-pre">
+      不用準備好。<br>
+      也不用確定會不會有用。<br>
+      <br>
+      只是先試試看。
+    </p>
+    <a href="https://tally.so/r/Pd0l25" class="btn-primary">先從這裡開始</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo">Little Cabin</div>
+      <div class="footer-tagline">Cabin Recovery · 測試期</div>
+    </div>
+    <div class="footer-info">
+      <strong>服務資訊</strong>
+      服務名稱：Cabin Recovery<br>
+      服務提供：Little Cabin<br>
+      服務方式：每日信件 + 紅燈延遲機制<br>
+      服務期間：21 天（測試期）<br>
+      費用：NT$500 一次性收費<br>
+      退款政策：測試期間不提供退款
+    </div>
+    <div class="footer-info">
+      <strong>聯絡我們</strong>
+      <a href="mailto:cabin@littlecabin.co">cabin@littlecabin.co</a>
+    </div>
+  </div>
+  <div class="footer-disclaimer">
+    Cabin Recovery 提供的是情緒陪伴與文字支持服務，不構成心理諮商、醫療建議或心理治療。如您正在經歷心理健康危機，請聯繫專業機構：自殺防治專線 1925（24小時）｜生命線 1995｜張老師 1980。<br><br>
+    © 2026 Little Cabin．所有服務內容以本頁說明為準。
+  </div>
+</footer>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
