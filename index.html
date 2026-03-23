@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cabin Recovery｜慢一點的地方</title>
-<meta name="description" content="在關係結束之後，有時候不是事情太難，是那一刻撐不住。Cabin Recovery 陪妳慢一點。">
+<title>Little Cabin｜慢一點的地方</title>
+<meta name="description" content="在關係結束之後，有時候不是事情太難，是那一刻過不去。Little Cabin 陪妳在這裡。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
@@ -137,17 +137,19 @@
   }
 
   .section-label {
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--light);
-    margin-bottom: 28px;
-    font-weight: 400;
+    font-size: 15px;
+    letter-spacing: 0.02em;
+    text-transform: none;
+    color: var(--brown);
+    margin-bottom: 32px;
+    font-weight: 500;
     line-height: 1.6;
+    border-left: 2px solid var(--light);
+    padding-left: 12px;
   }
 
   .section-title {
-    font-size: clamp(24px, 3.5vw, 36px);
+    font-size: clamp(28px, 4vw, 42px);
     font-weight: 500;
     line-height: 1.45;
     margin-bottom: 32px;
@@ -165,10 +167,31 @@
   /* MIRROR */
   .mirror-bg { background: #F7F4F0; }
 
-  .mirror-lines { margin-bottom: 36px; }
+  .mirror-list {
+    list-style: none;
+    margin-bottom: 36px;
+  }
+
+  .mirror-list li {
+    font-size: 17px;
+    color: var(--mid);
+    line-height: 1.7;
+    padding: 14px 0 14px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+
+  .mirror-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--light);
+    font-size: 13px;
+    top: 17px;
+  }
 
   .mirror-line {
-    font-size: 16px;
+    font-size: 17px;
     color: var(--mid);
     line-height: 1.6;
     padding: 4px 0;
@@ -183,7 +206,7 @@
   .mirror-line.gap { height: 16px; }
 
   .mirror-note {
-    font-size: 16px;
+    font-size: 17px;
     color: var(--brown);
     line-height: 2.0;
     font-weight: 400;
@@ -191,7 +214,7 @@
 
   /* WHAT */
   .what-p {
-    font-size: 16px;
+    font-size: 17px;
     line-height: 2.0;
     color: var(--mid);
     margin-bottom: 20px;
@@ -208,7 +231,7 @@
     padding: 28px 30px;
     background: #FAF7F2;
     border-left: 2px solid #C9AF8D;
-    font-size: 16px;
+    font-size: 17px;
     line-height: 2.0;
     color: var(--brown);
   }
@@ -234,14 +257,14 @@
   }
 
   .step-content h3 {
-    font-size: 15px;
+    font-size: 17px;
     font-weight: 500;
     color: var(--brown);
     margin-bottom: 8px;
   }
 
   .step-content p {
-    font-size: 14px;
+    font-size: 16px;
     color: var(--mid);
     line-height: 1.9;
   }
@@ -261,7 +284,7 @@
   }
 
   .redflag-p {
-    font-size: 17px;
+    font-size: 18px;
     color: var(--mid);
     line-height: 2.0;
     margin-bottom: 0;
@@ -282,15 +305,25 @@
   .not-lines { margin-bottom: 32px; }
 
   .not-line {
-    font-size: 15px;
+    font-size: 17px;
     color: var(--mid);
-    padding: 12px 0 12px 0;
+    padding: 14px 0 14px 20px;
     border-bottom: 1px solid var(--border);
     line-height: 1.7;
+    position: relative;
+  }
+
+  .not-line::before {
+    content: '×';
+    position: absolute;
+    left: 0;
+    color: var(--light);
+    font-size: 13px;
+    top: 17px;
   }
 
   .not-note {
-    font-size: 16px;
+    font-size: 17px;
     color: var(--brown);
     line-height: 2.0;
   }
@@ -344,7 +377,7 @@
   .price-includes { list-style: none; }
 
   .price-includes li {
-    font-size: 15px;
+    font-size: 16px;
     color: var(--mid);
     padding: 12px 0 12px 0;
     border-bottom: 1px solid var(--border);
@@ -370,7 +403,7 @@
   .cta-inner { max-width: 560px; margin: 0 auto; }
 
   .cta-pre {
-    font-size: 16px;
+    font-size: 17px;
     color: var(--mid);
     line-height: 2.1;
     margin-bottom: 40px;
@@ -489,15 +522,15 @@
 
 <!-- HERO -->
 <div class="hero reveal-hero">
-  <div class="hero-label">Cabin Recovery · 測試期</div>
+  <div class="hero-label">Little Cabin · 測試期</div>
   <h1 class="hero-title">
     有時候不是事情太難，<br>
     是那一刻<em>撐不住</em>。
   </h1>
   <div class="hero-break"></div>
   <p class="hero-sub">
-    Cabin Recovery<br>
-    是讓妳在那一刻，<br>
+    Little Cabin<br>
+    讓妳在那一刻，<br>
     不要做出之後會後悔的事。<br>
     <br>
     陪妳在這裡。
@@ -511,23 +544,16 @@
 <div class="mirror-bg">
   <div class="section reveal">
     <div class="section-label">妳可能認識這種感覺</div>
-    <div class="mirror-lines">
-      <div class="mirror-line">忍不住一直看對方的動態</div>
-      <div class="mirror-line gap"></div>
-      <div class="mirror-line">很想傳訊</div>
-      <div class="mirror-line gap"></div>
-      <div class="mirror-line indent">但傳完又後悔</div>
-      <div class="mirror-line gap"></div>
-      <div class="mirror-line">晚上腦袋停不下來</div>
-      <div class="mirror-line gap"></div>
-      <div class="mirror-line">明知道不該</div>
-      <div class="mirror-line indent">但還是做了</div>
-      <div class="mirror-line gap"></div>
-      <div class="mirror-line">一個人的時候，特別重</div>
-    </div>
+    <ul class="mirror-list">
+      <li>忍不住一直看對方的動態</li>
+      <li>很想傳訊，但傳完又後悔</li>
+      <li>晚上腦袋停不下來</li>
+      <li>明知道不該，但還是做了</li>
+      <li>一個人的時候，特別重</li>
+    </ul>
     <p class="mirror-note">
-      這不是妳不夠理性，<br>
-      是身體還在那個拉扯裡。
+      不是你想要回去，<br>
+      你只是身體還記得那個重量。
     </p>
   </div>
 </div>
@@ -542,7 +568,7 @@
   <p class="what-p">它只做一件事：</p>
   <p class="what-p key">
     在妳快要做出某些行為的時候，<br>
-    幫妳多等一點時間。
+    幫妳讓那一刻慢下來。
   </p>
   <div class="what-highlight">
     「不是要妳變好，<br>
@@ -567,7 +593,7 @@
       <div class="step-num">02</div>
       <div class="step-content">
         <h3>隔天收到一封信</h3>
-        <p>Cabin 根據妳留下的內容，在隔天早上回一封信。不是建議，是陪著妳看那個狀態。</p>
+        <p>Cabin 根據妳留下的內容，在隔天早上回一封信。不是建議，是讓妳知道妳走過來了。</p>
       </div>
     </div>
     <div class="step">
@@ -586,11 +612,8 @@
     <div class="section-label">紅燈機制</div>
     <h2 class="section-title">如果某一刻<br>真的撐不住</h2>
     <p class="redflag-p">
-      有時候不是不知道不該做，
-    </p>
-    <p class="redflag-p">
-      是那一刻，<br>
-      真的很想做。
+      不是想不想，<br>
+      是那一刻根本停不下來。
     </p>
     <div class="redflag-space"></div>
     <p class="redflag-p">
@@ -664,12 +687,10 @@
         <img src="logo.png" alt="Little Cabin" style="height:28px;width:28px;border-radius:5px;object-fit:cover;">
         <span>Little Cabin</span>
       </div>
-      <div class="footer-tagline">Cabin Recovery · 測試期</div>
+      <div class="footer-tagline">Little Cabin · 測試期</div>
     </div>
     <div class="footer-info">
       <strong>服務資訊</strong>
-      服務名稱：Cabin Recovery<br>
-      服務提供：Little Cabin<br>
       服務方式：每日信件 + 紅燈延遲機制<br>
       服務期間：21 天（測試期）<br>
       費用：NT$500 一次性收費<br>
@@ -681,7 +702,7 @@
     </div>
   </div>
   <div class="footer-disclaimer">
-    Cabin Recovery 提供的是情緒陪伴與文字支持服務，不構成心理諮商、醫療建議或心理治療。如您正在經歷心理健康危機，請聯繫專業機構：自殺防治專線 1925（24小時）｜生命線 1995｜張老師 1980。<br><br>
+    Little Cabin 提供的是情緒陪伴與文字支持服務，不構成心理諮商、醫療建議或心理治療。如您正在經歷心理健康危機，請聯繫專業機構：自殺防治專線 1925（24小時）｜生命線 1995｜張老師 1980。<br><br>
     © 2026 Little Cabin．所有服務內容以本頁說明為準。
   </div>
 </footer>
