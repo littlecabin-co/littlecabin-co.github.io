@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Little Cabin｜同意書</title>
+<title>Little Cabin</title>
 <script>
   const params = new URLSearchParams(window.location.search);
-  const email = params.get('email');
-  let url = "https://tally.so/r/Pd0l25";
-  if (email) url += "?email=" + encodeURIComponent(email);
+  const email = params.get('email') || '';
+  const name = params.get('name') || '';
+  
+  let url = 'https://tally.so/r/Pd0l25';
+  const q = new URLSearchParams();
+  if (email) q.set('email', email);
+  if (name) q.set('name', name);
+  if (q.toString()) url += '?' + q.toString();
+  
   window.location.replace(url);
 </script>
 </head>
-<body>
-<p style="font-family:sans-serif;color:#7A6458;text-align:center;margin-top:40vh;">正在跳轉...</p>
-</body>
+<body></body>
 </html>
