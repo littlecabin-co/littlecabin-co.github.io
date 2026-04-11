@@ -5,7 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Little Cabin｜走完這段路之後</title>
 <script>
-  window.location.replace("https://tally.so/r/BzQZzR");
+  const params = new URLSearchParams(window.location.search);
+  const email = params.get('email');
+  let url = "https://tally.so/r/BzQZzR";
+  if (email) url += "?email=" + encodeURIComponent(email);
+  window.location.replace(url);
 </script>
 </head>
 <body>
