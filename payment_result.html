@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Little Cabin｜謝謝妳走到這裡</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
+<link rel="apple-touch-icon" href="logo.png">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F5F2EE;
+    --warm-white: #FAF8F5;
+    --brown: #2F2420;
+    --mid: #7A6458;
+    --light: #BFA27A;
+    --border: #EDE5DA;
+    --accent: #9C8468;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--brown);
+    font-family: 'Noto Sans TC', sans-serif;
+    font-weight: 400;
+    line-height: 1.95;
+    letter-spacing: 0.01em;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    padding: 22px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    background: rgba(245,242,238,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s;
+  }
+
+  nav.scrolled { border-color: var(--border); }
+
+  .nav-logo {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--brown);
+    letter-spacing: 0.02em;
+  }
+
+  .nav-cta {
+    font-size: 13px;
+    color: var(--mid);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .nav-cta:hover { color: var(--brown); border-color: var(--accent); }
+
+  /* HERO（跟 index 一致的尺寸感）*/
+  .hero {
+    background: var(--cream);
+    padding: 180px 48px 120px;
+    max-width: 680px;
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .hero-label {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--light);
+    margin-bottom: 36px;
+    font-weight: 400;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.3s forwards;
+  }
+
+  .hero-title {
+    font-size: clamp(36px, 5vw, 54px);
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--brown);
+    margin-bottom: 8px;
+    letter-spacing: -0.015em;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.6s forwards;
+  }
+
+  .hero-break {
+    height: 28px;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.75s forwards;
+  }
+
+  .hero-sub {
+    font-size: 17px;
+    color: var(--mid);
+    line-height: 1.95;
+    max-width: 480px;
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.9s forwards;
+  }
+
+  .hero-sub + .hero-sub { margin-top: -16px; }
+
+  /* NEXT 區（跟 section-label 一致）*/
+  .next-block {
+    margin-top: 16px;
+    padding-top: 36px;
+    border-top: 1px solid var(--border);
+    max-width: 480px;
+    opacity: 0;
+    animation: fadeUp 1s ease 1.05s forwards;
+  }
+
+  .next-label {
+    font-size: 15px;
+    letter-spacing: 0.02em;
+    color: var(--brown);
+    margin-bottom: 16px;
+    font-weight: 500;
+    line-height: 1.6;
+    border-left: 2px solid var(--light);
+    padding-left: 12px;
+  }
+
+  .next-body {
+    font-size: 15px;
+    color: var(--mid);
+    line-height: 1.95;
+    padding-left: 14px;
+  }
+
+  .next-body a {
+    color: var(--mid);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .next-body a:hover {
+    color: var(--brown);
+    border-color: var(--accent);
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 56px 48px;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .footer-disclaimer {
+    font-size: 12px;
+    color: #A59586;
+    line-height: 1.85;
+  }
+
+  /* ANIMATION */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* MOBILE */
+  @media (max-width: 640px) {
+    nav { padding: 20px 24px; }
+    .hero { padding: 140px 24px 80px; }
+    footer { padding: 48px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-logo">
+    <img src="logo.png" alt="Little Cabin" style="height:40px;width:40px;border-radius:8px;object-fit:cover;vertical-align:middle;margin-right:10px;">
+    <span style="vertical-align:middle;">Little Cabin</span>
+  </div>
+  <a href="https://littlecabin.co" class="nav-cta">回首頁 →</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-label">妳已完成這一步</div>
+  <h1 class="hero-title">
+    謝謝妳，<br>
+    走到這裡。
+  </h1>
+  <div class="hero-break"></div>
+  <p class="hero-sub">
+    我會在收到妳的付款通知後，<br>
+    兩天內確認並寄一封歡迎信給妳。
+  </p>
+  <p class="hero-sub">
+    在那之前，<br>
+    妳什麼都不需要做。
+  </p>
+
+  <div class="next-block">
+    <div class="next-label">如果兩天後還沒收到我的信</div>
+    <p class="next-body">
+      可以先看一下垃圾信件夾，<br>
+      或寫信到 <a href="mailto:cabin@littlecabin.co">cabin@littlecabin.co</a>，<br>
+      我會親自確認狀況。
+    </p>
+  </div>
+</div>
+
+<footer>
+  <p class="footer-disclaimer">
+    © 2026 Little Cabin
+  </p>
+</footer>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+  });
+</script>
+
+</body>
+</html>
